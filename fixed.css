@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    outline: 1px solid red;
 }
 :root {
     --fundopreto: #010101;
@@ -29,7 +30,6 @@ nav{
     background-color: var(--fundopreto);
 }
 nav ul{
-    width: 100%;
     list-style: none;
     display: flex;
     align-items: center;
@@ -84,6 +84,7 @@ nav .experimental:hover{
     right: 0;
     height: 100vh;
     width: 250px;
+    max-width: 250px;
     background-color: var(--fundopreto);
     z-index: 999;
     display: none;
@@ -179,7 +180,7 @@ li::marker{
     .navmenu{
         display: flex;
     }
-      nav ul{
+      nav ul:not(.mobile){
         justify-content: space-between;
         margin: 0 20px 0 0;
     }

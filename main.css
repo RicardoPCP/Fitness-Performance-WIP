@@ -1,5 +1,6 @@
 main{
     grid-area: main;
+    overflow-x: hidden;
 }
 .hero-imagem{
     margin-top: 20px;
