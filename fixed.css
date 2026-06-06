@@ -5,13 +5,12 @@
 :root {
     --fundopreto: #010101;
     --texto: #F5F5F5;
-    --rosaclaro: #FC07FB; 
-    --magenta: #990C98; 
+    --rosaclaro: rgb(253, 8, 253); 
+    --magenta: rgb(153, 12, 152); 
 }
 body{
     line-height:1.6;
-    min-height: 100vw;
-    padding-top: var(--nav-height);
+    min-height: 100vh;
     font-family: 'Montserrat', sans-serif;
     background-color: var(--fundopreto);
     color: var(--texto);
@@ -68,8 +67,9 @@ nav .experimental{
     background-color: var(--rosaclaro);
     box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.329);
     border-radius: 30px;
+    margin-left: 10px;
     box-sizing: border-box;
-    }
+}
 nav .experimental:hover{
     background-color: var(--magenta);
     transform: scale(1.05);
@@ -77,7 +77,7 @@ nav .experimental:hover{
 }
 .navmenu{
     display: none;
-    }
+}
 .mobile{
     position: fixed;
     top: 0;
@@ -92,8 +92,8 @@ nav .experimental:hover{
     justify-content: flex-start;
 }
 .mobile .logo{
-margin: 0;
-padding: 0;
+    margin: 0;
+    padding: 0;
 }
 .mobile li:not(.experimental){
     width: 100%;
@@ -118,7 +118,6 @@ padding: 0;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
  }
-
 .footer-h{
     text-align: left;
     color: var(--magenta);
@@ -182,7 +181,7 @@ li::marker{
     }
       nav ul{
         justify-content: space-between;
-        padding: 0 20px;
+        margin: 0 20px 0 0;
     }
     footer{
         grid-template-columns: 1fr 1fr;
