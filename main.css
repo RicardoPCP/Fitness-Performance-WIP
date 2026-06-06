@@ -42,7 +42,7 @@ main{
     align-items: center;
 }
 .hero h1{
-    border-bottom: 4px solid var(--rosaclaro);
+    border-bottom: 4px solid var(--rosaclaro    );
     font-size: clamp(1.8rem, 5vw, 4rem);
     font-weight: 900;
     text-transform: uppercase;
