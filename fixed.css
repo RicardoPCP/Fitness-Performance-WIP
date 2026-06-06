@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    outline: 1px solid red;
+    /*outline: 1px solid red;*/
 }
 :root {
     --fundopreto: #010101;
@@ -26,6 +26,7 @@ body{
 /* NAVBAR */
 
 nav{
+    margin-top: 5px;
     grid-area: nav;
     background-color: var(--fundopreto);
 }
@@ -58,10 +59,24 @@ nav a{
 nav .logo{
     padding: 0 30px;
 }
-nav li:not(.experimental):hover a{
+nav li:not(.experimental) a{
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+nav li:not(.experimental) a::before{
+    content:'';
+    position:absolute;
+    bottom: 0;
+    left: 0;
+    height: 0%;
+    width: 100%;
     background-color: #fc07fc50;
-    transition: color 0.3s ease;
-    transform: translateY(-2px);
+    transition: height 0.3s ease;
+    z-index: -1;
+}
+nav li:not(.experimental) a:hover::before{
+    height: 100%;
 }
 nav .experimental{
     background-color: var(--rosaclaro);
@@ -107,7 +122,10 @@ nav .experimental:hover{
     justify-content: center;
     width: auto;
     margin: 10px;
-    }
+}
+.mobile li:not(.experimental) a:active, .mobile li:not(.experimental) a.ativo {
+    background-color: var(--magenta);
+}
 
 /* FOOTER */
  footer{
