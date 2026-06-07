@@ -22,6 +22,47 @@ body{
     "main main main"
     "footer footer footer";
 }
+.scroll-indicator {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: rgba(255, 255, 255, 0.9);
+    width: 40px;
+    height: 35px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    text-align: center;
+    font-size: 1.1rem;
+    padding-top: 4px;
+    animation: bounce 1.5s infinite;
+    transition: opacity 0.3s ease;
+}
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+}
+.zap, .insta {
+    position: fixed;
+    bottom: 30px;
+    left: 90%;
+    z-index: 2;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+.insta {
+    bottom: 120px;
+}
+.zap:hover, .insta:hover{
+    transform: translateY(-10px);
+}
 
 /* NAVBAR */
 
@@ -50,9 +91,10 @@ nav a{
     text-transform: uppercase;
     color: var(--texto);
     font-size: clamp(0.85rem, 1.2vw, 1.6rem);
+    -webkit-tap-highlight-color: transparent;
 }
 .logo{
-    width: 70px;
+    width: 85px;
     height: auto;
     display: block;
 }
@@ -123,8 +165,11 @@ nav .experimental:hover{
     width: auto;
     margin: 10px;
 }
-.mobile li:not(.experimental) a:active, .mobile li:not(.experimental) a.ativo {
+.mobile li:not(.experimental) a:active {
     background-color: var(--magenta);
+}
+.mobile svg{
+    margin-left: 10px;
 }
 
 /* FOOTER */
@@ -188,10 +233,19 @@ li::marker{
     text-decoration: none;
     display: inline-block;
     position:relative;
-    text-align: right;
+    text-align: center;
 }
 
- @media(max-width: 700px){
+@media(max-width: 765px){
+    .redes-footer ul, .redes-footer .footer-h{
+    margin-left: 10px;
+    }
+    .scroll-indicator{
+        display: flex;
+    }
+}
+    
+ @media(max-width: 710px){
     .esconderMobile{
         display: none;
     }
@@ -206,17 +260,24 @@ li::marker{
         grid-template-columns: 1fr 1fr;
     }
     .redes-footer{
-    margin-top: 10px;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+        margin-top: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
     }
     .logo-footer {
         grid-column: 1;
         grid-row: 1;
     }
-    .redes-footer ul{
+    .redes-footer ul, .redes-footer .footer-h{
         margin: 0;
+    }
+        .zap, .insta{
+        width: 50px;
+        height: 50px;
+    }
+    .insta{
+        bottom: 90px;
     }
 }
 
@@ -239,5 +300,8 @@ li::marker{
     .direitos-footer {
         margin-top: 1rem;
         padding-top: 1rem;
+    }
+    .zap, .insta{
+        left: 85%;
     }
 }

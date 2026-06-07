@@ -1,12 +1,13 @@
+/*HERO*/
 main{
     grid-area: main;
     overflow-x: hidden;
 }
 .hero-imagem{
-    margin-top: 20px;
+    margin: 10px 0 20px 0;
     position: relative;
     width: 100%;
-    height: 70vh;
+    height: 90vh;
     min-height: 500px;
     display: flex;
     flex-direction: column;
@@ -42,22 +43,243 @@ main{
     align-items: center;
 }
 .hero h1{
-    border-bottom: 4px solid var(--rosaclaro    );
+    border-bottom: 4px solid var(--magenta);
     font-size: clamp(1.8rem, 5vw, 4rem);
     font-weight: 900;
     text-transform: uppercase;
     line-height: 1.05;
     margin: 0 0 0.5rem;
     color: var(--texto);
-    text-shadow: -3px 2px 5px var(--rosaclaro);
+    text-shadow: -3px 2px 5px var(--magenta);
+    animation: fadeUp 1s ease 0.2s both;
 }
 .hero p{
   font-size: clamp(0.9rem, 1.8vw, 1.1rem);
   color: var(--texto);
   max-width: 480px;
   margin: 0;
+  animation: fadeUp 1s ease 0.4s both;
+}
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
+/*SOBRE*/
+.sobre{
+    width: 100%;
+    padding-bottom: 0;
+    flex-direction: column;
+    display: flex;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--magenta) 50%, rgba(83, 6, 83, 0.363)),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, transparent 40%);
+}
+.card-sobre{
+    display:flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 5% 5% 0;
+    min-height: 400px;
+}
+.sobre-img {
+    width: 400px;
+    height: 400px; 
+    background-image: url('assets/personal.png');
+    background-size: cover;
+    background-position: bottom;  
+    flex-shrink: 0;
+    align-self: flex-end;
+    filter: drop-shadow(15px 0 20px rgba(0,0,0,0.3));
+    transition-delay: 0.2s;
+}
+.sobre-texto{
+    flex: 1;
+    text-align: center;
+}
+.sobre-texto h1{
+    padding: 0 5%;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    border-bottom: 3px solid black;
+    display: inline-block;
+}
+.sobre-texto p{
+    margin: 0 10%;
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+.btn-mais{
+    text-transform: uppercase;
+    font-weight: 700;
+    background-color: var(--fundopreto);
+    border-radius: 30px;
+    padding: 15px 20px;
+    width: fit-content;
+    display: block;
+    margin: 0 auto 40px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.btn-mais a{
+    text-decoration: none;
+    color: inherit;
+}
+.btn-mais:hover{
+    color: var(--magenta);
+    transform: translateY(-4px);
+}
+.sobre-texto, .sobre-img, .card, .callout-texto {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.sobre-texto.visivel, .sobre-img.visivel, .card.visivel, .callout-texto.visivel {
+    opacity: 1;
+    transform: translateY(0);
+}
+.callout-img{
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.callout-img.visivel{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/*CARDS*/
+.info-cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin: 50px 0;
+    padding: 0 40px;
+    gap: 60px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+.card{
+    width: 280px;
+    flex: 0 0 280px;
+    background-color: var(--magenta);
+    box-shadow: inset 0 -10px 16px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    padding: 30px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.conteudo-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+}
+.conteudo-card p{
+    gap: 12px;
+    font-size: clamp(0.75rem, 1vw, 0.9rem);
+}
+.conteudo-card h3{
+    font-size: clamp(0.8rem, 1.2vw, 1rem);
+    letter-spacing: 1px;
+}
+.halter-icon, .group-icon, .mobile-icon{
+    display: block;
+    margin: 20px auto;
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 50%;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+/*CALLOUT*/
+.callout{
+    width: 100%;
+    padding-bottom: 0;
+    flex-direction: column;
+    display: flex;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--magenta) 50%, rgba(83, 6, 83, 0.363)),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, transparent 40%);
+}
+.card-callout{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 5% 5%;
+    min-height: 400px;
+    position: relative;
+    gap: 40px;
+}
+.callout-img {
+    width: 550px;
+    height: 450px; 
+    background-image: url('assets/alunos.jpeg');
+    background-size: cover;
+    background-position: center 30%;  
+    flex-shrink: 0;
+    filter: drop-shadow(15px 0 20px rgba(0,0,0,0.3));
+    transition-delay: 0.2s;
+    border-radius: 50px;
+    border: solid 10px rgba(22, 22, 22, 0.5);
+}
+.callout-texto{
+    flex: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    gap: 16px;
+}
+.callout-texto h1{
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 900;
+    border-bottom: 3px solid black;
+    display: inline-block;
+    margin: 0 auto 0;
+}
+.callout-texto h2 {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    font-weight: 700;
+    margin: 0;
+}
+.callout-texto p {
+    font-size: clamp(0.85rem, 1.2vw, 1rem);
+    margin: 0;
+    line-height: 1.8;
+}
+.callout-texto span{
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin-top: -40px;
+}
+
+/*RESPONSIVIDADE*/
+@media (max-width: 1180px) {
+    .info-cards {
+        padding: 0 20px;
+        gap: 16px;
+    }
+    .card {
+        width: 220px;
+        flex: 0 0 220px;
+    }
+}
 @media (max-width: 700px) {
     .hero-imagem {
         height: 50vh;
@@ -73,9 +295,62 @@ main{
     .hero-content {
         padding: 0 1.25rem 2rem;
     }
+    .card-sobre{
+        justify-content: space-between;
+        min-height: 80vh;
+        flex-direction: column;
+        align-items: center;
+        padding: 10% 5% 0;
+        flex: 1;
+    }
+    .sobre-img{
+        width: 100%;
+        height: 400px;
+        margin-top: auto;
+        background-size: 70%;
+        background-position: bottom center;
+        background-repeat: no-repeat;
+        align-self: stretch;
+    }
+    .sobre-texto p{
+        margin: 0 0 15px;
+        font-size: clamp(0.75re, 4vw, 0.9rem);
+    }
+    .info-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding: 0 20px;
+        margin: 30px 0;
+    }
+    .card {
+        max-width: 360px;
+        width: 70%;
+        flex: 0 0 auto;
+        margin: 0;
+    }
+        .card-callout {
+        flex-direction: column;
+        padding: 10% 5%;
+    }
+    .callout-img {
+        width: 100%;
+        height: 300px;
+        flex-shrink: 0;
+        background-position: center 60%;
+    }
+    .callout-texto {
+        max-width: 100%;
+    }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 600px) {
+    .sobre-img {
+        background-size: 70%; 
+    }
+}
+
+@media (max-width: 430px) {
     .hero-imagem {
         height: 45vh;
         min-height: 250px;
@@ -89,5 +364,11 @@ main{
     }
     .hero-content {
         padding: 0 1rem 1.5rem;
+    }
+    .sobre-img{
+        background-size: 100%;
+    }
+    .sobre-texto h1{
+        font-size: clamp(1.2, 6vw, 1.5);
     }
 }
