@@ -26,7 +26,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.2 });
 
-document.querySelectorAll('.sobre-texto, .sobre-img, .card, .callout-texto, .callout-img').forEach(el => {
+document.querySelectorAll('.sobre-texto, .sobre-img, .card, .callout-texto, .callout-img, .mapa, .local-texto, .texto-info').forEach(el => {
     observer.observe(el);
 });
 
