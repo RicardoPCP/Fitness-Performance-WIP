@@ -1,0 +1,288 @@
+main{
+    grid-area: main;
+    overflow-x: hidden;
+}
+
+/* PLANOS */
+.planos-card-mensals {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 60px 40px;
+    box-sizing: border-box;
+    width: 100%;
+    align-items: stretch;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+.header{
+    margin-bottom: 50px;
+}
+.titulo-plano {
+    flex-basis: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    flex-wrap: wrap;
+    position: relative;
+    margin-bottom: 30px;
+}
+.triangulo {
+    grid-column: 2;
+    grid-row: 1/3;
+    align-self: end;
+    order: 3;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 8px;
+    width: auto;
+    height: auto;
+    max-width: 50%;
+    margin-left: auto;
+}
+.titulo-plano h1 {
+    grid-column: 1;
+    grid-row: 1;
+    order: 1;
+    font-size: clamp(4.8rem, 7vw, 6rem);
+    font-style: italic;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    line-height: 0.9;
+    display: block;
+    width: 100%;
+    color: var(--rosaclaro);
+    border-bottom: 3px solid var(--rosaclaro);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    flex-basis: 100%;
+}
+.titulo-plano p {
+    grid-column: 1;
+    grid-row: 2;
+    order: 2;
+    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin: 0;
+    flex-basis: 100%;
+}
+.logo-plano {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    height: 60px;
+    width: auto;
+}
+
+/*CARDS*/
+.card-mensal{
+    background-color: var(--magenta);
+    padding: 24px 16px;
+    border-radius: 25px;
+    display: flex;
+    text-align: center;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 0 0 220px;
+    box-shadow: inset 0 -15px 20px rgba(0, 0, 0, 0.3),
+    inset 0 15px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-mensal:hover{
+    transform: translateY(-8px);
+}
+.conteudo-card-mensal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+    flex: 1;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.conteudo-card-mensal h3, .conteudo-card-mensal ul,
+.badge,.btn-plano {
+    width: 100%;
+    box-sizing: border-box;
+}
+.card-mensal h3{
+    font-weight: 800;
+    font-size: 1.3rem;
+    letter-spacing: 1.5px;
+}
+.badge{
+    background-color: var(--rosaclaro);
+    font-size: 1rem;
+    border-radius: 10px;
+    padding: 3px 10px;
+    font-weight: 700;
+    position: absolute;
+    margin: 0 auto;
+    top: -10px;
+    width: 160px;
+    text-align: center;
+    transform: translateX(-50%);
+    left: 50%;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+.card-mensal p{
+    line-height: 1.3;
+    font-size: 1rem;
+}
+.card-mensal > .conteudo-card-mensal > p {
+    min-height: 60px;
+}
+.valor{
+    margin: auto;
+    font-size: 3rem;
+    border: 1px solid white;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 10px;
+    font-weight: 800;
+}
+.valor span{
+    font-size: 1rem;
+    vertical-align: super;
+    font-weight: 700;
+    padding: 0 5px;
+}
+.conteudo-card-mensal ul{
+    list-style: square;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    width: 100%;
+}
+.conteudo-card-mensal li{
+    padding: 5px 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: left;
+    margin-left: 25px;
+}
+li::marker{
+    color: white;
+    font-weight: 900;
+}
+
+.btn-plano{
+    text-transform: uppercase;
+    font-weight: 700;
+    background-color: var(--fundopreto);
+    border-radius: 30px;
+    padding: 15px 20px;
+    width: fit-content;
+    display: block;
+    margin: 10px auto 0;
+    margin-top: auto;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+a.btn-plano{
+    text-decoration: none;
+    color: inherit;
+}
+.btn-plano:hover{
+    color: var(--magenta);
+    transform: translateY(-4px);
+}
+.conteudo-card-mensal p span{
+    font-weight: 900;
+    font-style: italic;
+}
+.conteudo-card-mensal:hover{
+    transform: translateY(-8px);
+}
+
+/*ANIMACAO*/
+.card-mensal, .header {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.card-mensal.visivel, .header.visivel  {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 1170px) {
+    .titulo-plano h1 {
+        font-size: clamp(3rem, 6vw, 4.5rem);
+    }
+
+    .triangulo svg {
+        width: 120px;
+        height: auto;
+    }
+
+    .triangulo {
+        max-width: 60%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .planos-card-mensals {
+        gap: 16px;
+        padding: 40px 30px;
+    }
+    .card-mensal {
+        flex: 0 0 200px;
+    }
+    .card-mensal h3 {
+        font-size: 1.3rem;
+    }
+    .valor {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 700px){
+    .card-mensal{
+        flex: 0 0 260px;
+    }
+    .planos-card-mensals{
+        padding: 40px 20px;
+        gap: 40px;
+    }
+        .titulo-plano {
+        grid-template-columns: 1fr;
+    }
+    .titulo-plano p {
+        width: 100%;
+        margin-bottom: 0;
+        font-size: clamp(0.8rem, 3.5vw, 1rem);
+    }
+    .triangulo {
+        display: none;
+    }
+    .titulo-plano h1 {
+        font-size: clamp(3rem, 10vw, 4.5rem);
+    }
+        .conteudo-card-mensal li {
+        font-size: 0.9rem;
+    }
+    .header{
+    margin-bottom: 0px;
+}
+}
+
+@media (max-width: 400px) {
+    .card-mensal {
+        flex: 0 0 80%;
+        width: 80%;
+    }
+
+    .planos-card-mensals {
+        padding: 30px 16px;
+    }
+}

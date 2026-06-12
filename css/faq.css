@@ -1,0 +1,99 @@
+main{
+    grid-area: main;
+    overflow-x: hidden;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+.titulo h1{
+    padding-top: 40px;
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-style: italic;
+    font-weight: 900;
+    color: var(--rosaclaro);
+    border-bottom: 3px solid var(--rosaclaro);
+}
+.faq {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 25px;
+    padding: 50px 0;
+    box-sizing: border-box;
+    align-items: stretch;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 0 5px 0;
+}
+details summary{
+    background-color: var(--magenta);
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: inset 0px -5px 10px rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+}
+summary{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+details[open] summary{
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+summary::before{
+    content: "+";
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+    font-weight: 700;
+    margin-right: 10px;
+}
+details[open] summary::before{   
+    transform: rotate(90deg);
+} 
+details p{
+    border: solid 3px var(--magenta);
+    border-top: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    overflow: hidden;
+    opacity: 0;
+    max-height: 0;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+details[open] p{
+    max-height: 200px;
+    opacity: 1;
+    padding: 10px;
+}
+details a{
+    color: inherit;
+    font-weight: 600;
+}
+details a:hover{
+    color: var(--magenta);
+}
+
+/*ANIMACAO*/
+.faqmain .titulo, .faq {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.faqmain .titulo.visivel, .faq.visivel  {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width:840px){
+    main{
+        padding: 0 25px;
+    }
+    summary{
+        margin-bottom: 10px;
+    }
+}

@@ -81,7 +81,7 @@ main{
 .sobre-img {
     width: 400px;
     height: 400px; 
-    background-image: url('assets/personal.png');
+    background-image: url('/assets/personal.png');
     background-size: cover;
     background-position: bottom;  
     flex-shrink: 0;
@@ -123,26 +123,6 @@ main{
 .btn-mais:hover{
     color: var(--magenta);
     transform: translateY(-4px);
-}
-.sobre-texto, .sobre-img, .card, .texto-info, 
-.callout-texto, .callout-texto, .local-texto, .mapa  {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.sobre-texto.visivel, .sobre-img.visivel, .card.visivel, .texto-info.visivel,
-.callout-texto.visivel, .local-texto.visivel, .mapa.visivel  {
-    opacity: 1;
-    transform: translateY(0);
-}
-.callout-img{
-    opacity: 0;
-    transform: translateX(-30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.callout-img.visivel{
-    opacity: 1;
-    transform: translateY(0);
 }
 
 /*CARDS*/
@@ -232,7 +212,7 @@ main{
 .callout-img {
     width: 550px;
     height: 450px; 
-    background-image: url('assets/alunos.jpeg');
+    background-image: url('/assets/alunos.jpeg');
     background-size: cover;
     background-position: center 30%;  
     flex-shrink: 0;
@@ -258,6 +238,7 @@ main{
     border-bottom: 3px solid black;
     display: inline-block;
     margin: 0 auto 0;
+    font-style: italic;
 }
 .callout-texto h2 {
     font-size: clamp(1.2rem, 2.5vw, 2rem);
@@ -314,6 +295,37 @@ main{
     max-width: 100%;
     flex-basis: auto;
     /**filter: grayscale(50%) invert(100%) contrast(95%);*/
+}
+
+/*ANIMACAO*/
+.sobre-texto, .sobre-img, .card, .texto-info, 
+.callout-texto, .callout-texto, .local-texto, .mapa  {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.sobre-texto.visivel, .sobre-img.visivel, .card.visivel, .texto-info.visivel,
+.callout-texto.visivel, .local-texto.visivel, .mapa.visivel  {
+    opacity: 1;
+    transform: translateY(0);
+}
+.callout-img{
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.callout-img.visivel{
+    opacity: 1;
+    transform: translateY(0);
+}
+.callout-texto{
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.callout-texto.visivel{
+    opacity: 1;
+    transform: translateY(0);
 }
 
 @keyframes fadeUp {
