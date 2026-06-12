@@ -81,7 +81,7 @@ main{
 .sobre-img {
     width: 400px;
     height: 400px; 
-    background-image: url('/assets/personal.png');
+    background-image: url('./assets/personal.png');
     background-size: cover;
     background-position: bottom;  
     flex-shrink: 0;
@@ -212,7 +212,7 @@ main{
 .callout-img {
     width: 550px;
     height: 450px; 
-    background-image: url('/assets/alunos.jpeg');
+    background-image: url('./assets/alunos.jpeg');
     background-size: cover;
     background-position: center 30%;  
     flex-shrink: 0;
