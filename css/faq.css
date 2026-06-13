@@ -25,6 +25,7 @@ main{
     width: 100%;
     max-width: 800px;
     margin: 0 0 5px 0;
+    animation: fadeUp 1s ease 0.2s both;
 }
 details summary{
     background-color: var(--magenta);
@@ -79,21 +80,32 @@ details a:hover{
 }
 
 /*ANIMACAO*/
-.faqmain .titulo, .faq {
+.faqmain .titulo {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
-.faqmain .titulo.visivel, .faq.visivel  {
+.faqmain .titulo.visivel  {
     opacity: 1;
     transform: translateY(0);
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media (max-width:840px){
     main{
         padding: 0 25px;
     }
-    summary{
-        margin-bottom: 10px;
+    details[open] p{
+        margin-bottom:10px;
     }
 }
