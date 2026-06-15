@@ -57,8 +57,8 @@ main{
     line-height: 0.9;
     display: block;
     width: 100%;
-    color: var(--rosaclaro);
-    border-bottom: 3px solid var(--rosaclaro);
+    color: var(--magenta);
+    border-bottom: 3px solid var(--magenta);
     padding-bottom: 10px;
     margin-bottom: 10px;
     flex-basis: 100%;

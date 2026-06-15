@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
     /*outline: 1px solid red;*/
 }
 :root {
@@ -92,9 +93,9 @@ nav a{
     align-items: center;
     text-decoration: none;
     text-transform: uppercase;
-    color: var(--texto);
     font-size: clamp(0.85rem, 1.2vw, 1.6rem);
     -webkit-tap-highlight-color: transparent;
+    color: inherit;
 }
 .logo{
     width: 85px;
@@ -125,16 +126,18 @@ nav li:not(.experimental) a:hover::before{
     height: 100%;
 }
 nav .experimental{
-    background-color: var(--rosaclaro);
+    background-color: var(--magenta);
     box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.329);
     border-radius: 30px;
     margin-left: 10px;
     box-sizing: border-box;
+    font-weight: 600;
+    width: fit-content;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 nav .experimental:hover{
-    background-color: var(--magenta);
+    color: black;
     transform: scale(1.05);
-    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 .navmenu{
     display: none;

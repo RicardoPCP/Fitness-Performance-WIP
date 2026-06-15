@@ -51,3 +51,35 @@ window.addEventListener('scroll', () => {
         iconzap.style.opacity = '1', iconinsta.style.opacity = '1';;
     }
 });
+
+//FORM PLAYLIST
+
+document.getElementById('playlist').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const ultimoEnvio = localStorage.getItem('ultimoEnvio');
+  const agora = new Date().getTime();
+  const cincoDias = 5 * 24 * 60 * 60 * 1000;
+
+  if (ultimoEnvio && agora - ultimoEnvio < cincoDias) {
+    const diasRestantes = Math.ceil((cincoDias - (agora - ultimoEnvio)) / (24 * 60 * 60 * 1000));
+    alert(`Você já enviou uma sugestão. Tente novamente em ${diasRestantes} dia(s).`);
+    return;
+  }
+
+  const dados = {
+    nome: document.getElementById('nome').value,
+    musica: document.getElementById('musica').value
+  };
+
+  fetch('https://script.google.com/macros/s/AKfycbwryEu4jO73w1d5xr4Lg2lZlOCq7bWImvsokqKrqnoak2FoU0N9Tj_GjLgxdSG34lF98Q/exec', {
+    method: 'POST',
+    mode: 'no-cors',
+    body: JSON.stringify(dados)
+  })
+  .then(() => {
+    localStorage.setItem('ultimoEnvio', agora);
+    alert('Enviado com sucesso!');
+  })
+  .catch(() => alert('Erro ao enviar.'));
+});

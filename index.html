@@ -16,7 +16,7 @@
         <nav>
             <ul>
                 <li><img class="logo" src="assets/logo.png" alt="Logo"></li>
-                <li class="esconderMobile"><a href="index.html">INÍCIO</a></li>
+                <li class="esconderMobile"><a href="#hero">INÍCIO</a></li>
                 <li class="esconderMobile"><a href="./html/sobre.html">SOBRE</a></li>
                 <li class="esconderMobile"><a href="./html/planos.html">PLANOS</a></li>
                 <li class="esconderMobile"><a href="./html/playlist.html">PLAYLIST</a></li>
@@ -26,12 +26,12 @@
             </ul>
             <ul class="mobile">
                 <li onclick="fecharSidebar()"><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#e3e3e3"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"./></svg></li>
-                <li><a href="index.html">INÍCIO</a></li>
+                <li><a href="#hero">INÍCIO</a></li>
                 <li><a href="./html/sobre.html">SOBRE</a></li>
                 <li><a href="./html/planos.html">PLANOS</a></li>
                 <li><a href="./html/playlist.html">PLAYLIST</a></li>
                 <li><a href ="./html/faq.html">FAQ</a></li>
-                <li class="experimental"><a href="#experimental ">AULA EXPERIMENTAL</a></li>
+                <li class="experimental"><a href="#experimental">AULA EXPERIMENTAL</a></li>
             </ul>
         </nav>
 
@@ -40,7 +40,7 @@
         <div class="scroll-indicator">▼</div>
 
 <main>
-        <section class="hero">
+        <section class="hero" id="hero">
         <div class="hero-imagem">
             <img class="banner" src="assets/predio.jpeg" alt="Banner Fitness Performance">
             <div class="hero-content">
@@ -118,6 +118,26 @@
         </div>
         </section>
         
+        <section class="playlist">
+         <div class="card-playlist">
+            <div class="playlist-texto">
+                <h1>SEU TREINO, SUA MÚSICA!</h1>
+                <p>Tem aquela música que te motiva? Envie sua sugestão aqui e ajude a montar nossa playlist! *</p>
+            </div>
+            <div class="form-playlist">
+            <form id="playlist">
+                <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" autocomplete="off" required><br>
+                <label for="musica">Digite sua música:</label>
+                    <input type="text" id="musica" name="musica" autocomplete="off" required><br>
+                <input class="enviar" type="submit" value="Enviar">
+            </form>
+            <p><span>*Ao enviar sua sugestão, você concorda com o uso dos dados informados apenas para gerenciamento da playlist da academia.<br>
+            *Apenas uma recomendação a cada cinco dias.</span></p>
+            </div>
+         </div>
+        </section>
+
         <section class="local">
          <div class="card-local">
             <div class="local-texto">
@@ -129,7 +149,7 @@
             </div>
          </div>
         </section>
-        
+
     </main>
 
         <footer>

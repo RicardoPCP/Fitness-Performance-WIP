@@ -11,8 +11,8 @@ main{
     font-size: clamp(3rem, 8vw, 5rem);
     font-style: italic;
     font-weight: 900;
-    color: var(--rosaclaro);
-    border-bottom: 3px solid var(--rosaclaro);
+    color: var(--magenta);
+    border-bottom: 3px solid var(--magenta);
 }
 .faq {
     display: flex;
