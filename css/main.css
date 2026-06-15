@@ -465,6 +465,11 @@ form input.enviar:hover{
     color: var(--texto);
     transform: translateY(-4px);
 }
+.confirmacao-form{
+    font-size: 0.6rem;
+    opacity: 0.7;
+    margin-top: 10px;
+}
 
 /*ANIMACAO*/
 .sobre-texto, .sobre-img, .card, .texto-info, 

@@ -60,10 +60,11 @@ document.getElementById('playlist').addEventListener('submit', function(e) {
   const agora = new Date().getTime();
   const cincoDias = 5 * 24 * 60 * 60 * 1000;
   const botao = document.querySelector('.enviar');
+  const textConfirmacao = document.querySelector('.confirmacao-form p');
 
   if (ultimoEnvio && agora - ultimoEnvio < cincoDias) {
     const diasRestantes = Math.ceil((cincoDias - (agora - ultimoEnvio)) / (24 * 60 * 60 * 1000));
-    alert(`Você já enviou uma sugestão. Tente novamente em ${diasRestantes} dia(s).`);
+    textConfirmacao.innerHTML = `Você já enviou uma sugestão. Tente novamente em ${diasRestantes} dia(s).`;
     return;
   }
 
@@ -80,7 +81,8 @@ document.getElementById('playlist').addEventListener('submit', function(e) {
   })
   .then(() => {
     localStorage.setItem('ultimoEnvio', agora);
-    alert('Enviado com sucesso!');
+    textConfirmacao.innerHTML = 'Enviado com sucesso!';
   })
-  .catch(() => alert('Erro ao enviar.'));
+  .catch(() => { textConfirmacao.innerHTML = 'Erro ao enviar.';
+})
 });
