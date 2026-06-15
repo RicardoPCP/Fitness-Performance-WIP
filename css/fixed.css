@@ -151,10 +151,15 @@ nav .experimental:hover{
     max-width: 250px;
     background-color: var(--fundopreto);
     z-index: 999;
-    display: none;
+    display: flex;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+}
+.mobile.aberta{
+    transform: translateX(0);
 }
 .mobile .logo{
     margin: 0;
@@ -210,11 +215,6 @@ nav .experimental:hover{
 }
 li::marker{
     color: var(--magenta);   
-}
-.redes-footer{
-    justify-content: flex-end;
-    align-items: center;
-    gap: 10px;
 }
 .redes-footer ul{
     margin-top: 10px;

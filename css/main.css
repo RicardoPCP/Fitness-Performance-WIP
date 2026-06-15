@@ -62,9 +62,8 @@ main{
 }
 
 /*SOBRE*/
-.sobre{
+.sobre, .callout, .playlist{
     width: 100%;
-    padding-bottom: 0;
     flex-direction: column;
     display: flex;
     overflow: hidden;
@@ -105,10 +104,9 @@ main{
     margin-bottom: 40px;
     line-height: 1.8;
 }
-.btn-mais{
+.btn-mais, .btn-mais-experimental{
     text-transform: uppercase;
     font-weight: 700;
-    background-color: var(--fundopreto);
     border-radius: 30px;
     padding: 15px 20px;
     width: fit-content;
@@ -116,7 +114,10 @@ main{
     margin: 0 auto 40px;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
-.btn-mais a{
+.btn-mais { 
+    background-color: var(--fundopreto); 
+}
+.btn-mais a, .btn-mais-experimental a{
     text-decoration: none;
     color: inherit;
 }
@@ -190,13 +191,6 @@ main{
 }
 
 /*CALLOUT*/
-.callout{
-    width: 100%;
-    padding-bottom: 0;
-    flex-direction: column;
-    display: flex;
-    overflow: hidden;
-}
 .card-callout{
     display:flex;
     flex-direction: row;
@@ -258,7 +252,6 @@ main{
 }
 .callout-texto h1 span.valor{
     margin: auto;
-    font-size: 3rem;
     display: inline-block;
     padding: 5px;
     padding-left: 0px;
@@ -342,20 +335,8 @@ main{
     font-style: italic;
     color: var(--magenta)
 }
-.btn-mais-experimental{
-    text-transform: uppercase;
-    font-weight: 700;
-    background-color: var(--magenta);
-    border-radius: 30px;
-    padding: 15px 20px;
-    width: fit-content;
-    display: block;
-    margin: 0 auto 40px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-.btn-mais-experimental a{
-    text-decoration: none;
-    color: inherit;
+.btn-mais-experimental { 
+    background-color: var(--magenta); 
 }
 .btn-mais-experimental:hover{
     color: black;
@@ -367,6 +348,7 @@ main{
     width: 100%;
     flex-direction: column;
     overflow: hidden;
+    display: flex;
 }
 .card-local{
     position: relative;
@@ -403,11 +385,6 @@ main{
 }
 
 /*PLAYLIST*/
-.playlist{
-    width: 100%;
-    flex-direction: column;
-    overflow: hidden;
-}
 .card-playlist{
     position: relative;
     align-items: center;
@@ -452,6 +429,13 @@ form input{
     background-color: rgb(236, 236, 236);
     border-color: transparent;
 }
+form label{
+    position: relative;
+    right: 2rem;
+}
+form label:first-child{
+    right: 3.7rem;
+}
 form input.enviar{
     padding: 10px 20px;
     border-radius: 25px;
@@ -470,10 +454,24 @@ form input.enviar:hover{
     opacity: 0.7;
     margin-top: 10px;
 }
+span.aguarde, span.erro, span.sucesso{
+    font-weight: 800;
+    font-size: 1.5rem;
+    opacity: 1;
+}
+span.aguarde{
+    color: rgb(255, 238, 0);
+}
+span.erro{
+    color: rgb(255, 0, 0);
+}
+span.sucesso{
+    color: rgb(6, 175, 0);
+}
 
 /*ANIMACAO*/
 .sobre-texto, .sobre-img, .card, .texto-info, 
-.callout-texto, .callout-texto, .local-texto, .mapa, .playlist-texto, form  {
+.callout-texto, .local-texto, .mapa, .playlist-texto, form  {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease, transform 0.8s ease;
@@ -647,12 +645,6 @@ form input.enviar:hover{
         background-position: center 0%;
     }
     .callout-texto h1{
-        width: 80%;
-    }
-}
-
-@media (max-width: 380px){
-        .callout-texto h1{
         width: 80%;
     }
 }

@@ -1,12 +1,12 @@
 //NAVBAR
 function sidebarMobile(){
   const sidebar = document.querySelector('.mobile');
-  sidebar.style.display = 'flex';
+  document.querySelector('.mobile').classList.add('aberta');
 }
 
 function fecharSidebar(){
   const sidebar = document.querySelector('.mobile');
-  sidebar.style.display = 'none';
+  document.querySelector('.mobile').classList.remove('aberta');
 }
 
 //hover rosa NAVBAR
@@ -52,21 +52,25 @@ window.addEventListener('scroll', () => {
     }
 });
 
+
 //FORM PLAYLIST
 document.getElementById('playlist').addEventListener('submit', function(e) {
   e.preventDefault();
 
   const ultimoEnvio = localStorage.getItem('ultimoEnvio');
   const agora = new Date().getTime();
-  const cincoDias = 5 * 24 * 60 * 60 * 1000;
+  const cooldownDias = 2 /*dia*/ * 24 * 60 * 60 * 1000;
   const botao = document.querySelector('.enviar');
   const textConfirmacao = document.querySelector('.confirmacao-form p');
 
-  if (ultimoEnvio && agora - ultimoEnvio < cincoDias) {
-    const diasRestantes = Math.ceil((cincoDias - (agora - ultimoEnvio)) / (24 * 60 * 60 * 1000));
-    textConfirmacao.innerHTML = `Você já enviou uma sugestão. Tente novamente em ${diasRestantes} dia(s).`;
+  if (ultimoEnvio && agora - ultimoEnvio < cooldownDias) {
+    const diasRestantes = Math.ceil((cooldownDias - (agora - ultimoEnvio)) / (24 * 60 * 60 * 1000));
+    textConfirmacao.innerHTML = `<span class="aguarde"> ! </span> Você já enviou uma sugestão. Tente novamente em ${diasRestantes} dia(s).`;
     return;
   }
+
+  botao.disabled = true;
+  botao.value = 'Enviando...';
 
   const dados = {
     nome: document.getElementById('nome').value,
@@ -81,8 +85,12 @@ document.getElementById('playlist').addEventListener('submit', function(e) {
   })
   .then(() => {
     localStorage.setItem('ultimoEnvio', agora);
-    textConfirmacao.innerHTML = 'Enviado com sucesso!';
+    textConfirmacao.innerHTML = '<span class="sucesso"> ✓ </span> Enviado com sucesso!';
+    botao.disabled = false;
+    botao.value = 'Enviar';
   })
-  .catch(() => { textConfirmacao.innerHTML = 'Erro ao enviar.';
+  .catch(() => { textConfirmacao.innerHTML = '<span class="erro"> X </span> Erro ao enviar.';
+    botao.disabled = false;
+    botao.value = 'Enviar';
 })
 });

@@ -34,8 +34,6 @@ details summary{
     cursor: pointer;
     box-shadow: inset 0px -5px 10px rgba(0, 0, 0, 0.2);
     font-weight: 600;
-}
-summary{
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -58,9 +56,7 @@ details p{
     border: solid 3px var(--magenta);
     border-top: none;
     padding: 5px 10px;
-    border-radius: 10px;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
+    border-radius: 0 0 10px 10px;
     overflow: hidden;
     opacity: 0;
     max-height: 0;
