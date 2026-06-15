@@ -56,41 +56,31 @@ window.addEventListener('scroll', () => {
 document.getElementById('playlist').addEventListener('submit', function(e) {
   e.preventDefault();
 
-  const botao = document.querySelector('.enviar');
-  botao.disabled = true;
-  botao.value = 'Enviando...';
-
   const ultimoEnvio = localStorage.getItem('ultimoEnvio');
   const agora = new Date().getTime();
   const cincoDias = 5 * 24 * 60 * 60 * 1000;
+  const botao = document.querySelector('.enviar');
 
   if (ultimoEnvio && agora - ultimoEnvio < cincoDias) {
     const diasRestantes = Math.ceil((cincoDias - (agora - ultimoEnvio)) / (24 * 60 * 60 * 1000));
     alert(`Você já enviou uma sugestão. Tente novamente em ${diasRestantes} dia(s).`);
-    botao.disabled = false;
-    botao.value = 'Enviar';
     return;
   }
 
-  const url = new URL('https://script.google.com/macros/s/AKfycbxNyrZLt4H7CExt0sRqj-i97DfQPyBRAEETD14eAwpKAH1kREsqQFO34zNecBBwXlRfvQ/exec');
-  url.searchParams.append('nome', document.getElementById('nome').value);
-  url.searchParams.append('musica', document.getElementById('musica').value);
+  const dados = {
+    nome: document.getElementById('nome').value,
+    musica: document.getElementById('musica').value,
+    artista: document.getElementById('artista').value
+  };
 
-  fetch(url, { method: 'GET' })
-  .then(res => res.json())
-  .then(res => {
-    if (res.status === 'ok') {
-      localStorage.setItem('ultimoEnvio', agora);
-      alert('Enviado com sucesso!');
-    } else if (res.status === 'bloqueado') {
-      alert('Você já enviou uma sugestão nos últimos 5 dias.');
-      botao.disabled = false;
-      botao.value = 'Enviar';
-    }
+  fetch('https://script.google.com/macros/s/AKfycbxNyrZLt4H7CExt0sRqj-i97DfQPyBRAEETD14eAwpKAH1kREsqQFO34zNecBBwXlRfvQ/exec', {
+    method: 'POST',
+    mode: 'no-cors',
+    body: JSON.stringify(dados)
   })
-  .catch(() => {
-    alert('Erro ao enviar.');
-    botao.disabled = false;
-    botao.value = 'Enviar';
-  });
+  .then(() => {
+    localStorage.setItem('ultimoEnvio', agora);
+    alert('Enviado com sucesso!');
+  })
+  .catch(() => alert('Erro ao enviar.'));
 });
