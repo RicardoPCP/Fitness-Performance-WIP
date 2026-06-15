@@ -26,7 +26,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.2 });
 
-document.querySelectorAll('.sobre-texto, .sobre-img, .card, .callout-texto, .callout-img, .mapa, .local-texto, .texto-info, .card-mensal, .header, .faqmain .titulo, .experimental-texto, .experimental-img').forEach(el => {
+document.querySelectorAll('.sobre-texto, .sobre-img, .card, .callout-texto, .callout-img, .mapa, .local-texto, .texto-info, .card-mensal, .header, .faqmain .titulo, .experimental-texto, .experimental-img, .playlist-texto, form').forEach(el => {
     observer.observe(el);
 });
 
@@ -53,9 +53,12 @@ window.addEventListener('scroll', () => {
 });
 
 //FORM PLAYLIST
-
 document.getElementById('playlist').addEventListener('submit', function(e) {
   e.preventDefault();
+
+  const botao = document.querySelector('.enviar');
+  botao.disabled = true;
+  botao.value = 'Enviando...';
 
   const ultimoEnvio = localStorage.getItem('ultimoEnvio');
   const agora = new Date().getTime();
@@ -64,22 +67,30 @@ document.getElementById('playlist').addEventListener('submit', function(e) {
   if (ultimoEnvio && agora - ultimoEnvio < cincoDias) {
     const diasRestantes = Math.ceil((cincoDias - (agora - ultimoEnvio)) / (24 * 60 * 60 * 1000));
     alert(`Você já enviou uma sugestão. Tente novamente em ${diasRestantes} dia(s).`);
+    botao.disabled = false;
+    botao.value = 'Enviar';
     return;
   }
 
-  const dados = {
-    nome: document.getElementById('nome').value,
-    musica: document.getElementById('musica').value
-  };
+  const url = new URL('https://script.google.com/macros/s/AKfycbxNyrZLt4H7CExt0sRqj-i97DfQPyBRAEETD14eAwpKAH1kREsqQFO34zNecBBwXlRfvQ/exec');
+  url.searchParams.append('nome', document.getElementById('nome').value);
+  url.searchParams.append('musica', document.getElementById('musica').value);
 
-  fetch('https://script.google.com/macros/s/AKfycbwryEu4jO73w1d5xr4Lg2lZlOCq7bWImvsokqKrqnoak2FoU0N9Tj_GjLgxdSG34lF98Q/exec', {
-    method: 'POST',
-    mode: 'no-cors',
-    body: JSON.stringify(dados)
+  fetch(url, { method: 'GET' })
+  .then(res => res.json())
+  .then(res => {
+    if (res.status === 'ok') {
+      localStorage.setItem('ultimoEnvio', agora);
+      alert('Enviado com sucesso!');
+    } else if (res.status === 'bloqueado') {
+      alert('Você já enviou uma sugestão nos últimos 5 dias.');
+      botao.disabled = false;
+      botao.value = 'Enviar';
+    }
   })
-  .then(() => {
-    localStorage.setItem('ultimoEnvio', agora);
-    alert('Enviado com sucesso!');
-  })
-  .catch(() => alert('Erro ao enviar.'));
+  .catch(() => {
+    alert('Erro ao enviar.');
+    botao.disabled = false;
+    botao.value = 'Enviar';
+  });
 });

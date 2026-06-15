@@ -468,13 +468,13 @@ form input.enviar:hover{
 
 /*ANIMACAO*/
 .sobre-texto, .sobre-img, .card, .texto-info, 
-.callout-texto, .callout-texto, .local-texto, .mapa  {
+.callout-texto, .callout-texto, .local-texto, .mapa, .playlist-texto, form  {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
 .sobre-texto.visivel, .sobre-img.visivel, .card.visivel, .texto-info.visivel,
-.callout-texto.visivel, .local-texto.visivel, .mapa.visivel  {
+.callout-texto.visivel, .local-texto.visivel, .mapa.visivel, .playlist-texto.visivel, form.visivel  {
     opacity: 1;
     transform: translateY(0);
 }
