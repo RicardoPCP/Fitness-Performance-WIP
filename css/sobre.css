@@ -1,4 +1,261 @@
 main{
     grid-area: main;
     overflow-x: hidden;
+    overflow-y: hidden;
+}
+.sobre-acad, .sobre-equipe, .sobre-app, .sobre-aparelhos{
+    width: 100%;
+    flex-direction: column;
+    overflow: hidden;
+    display: flex;
+}
+.secao-card, .equipe-conteudo, .app-conteudo, .equipamento-conteudo{
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 2% 5%;
+    min-height: 400px;
+}
+h1{
+    display: inline-block;
+    margin: 1.5rem 0;
+}
+.secao-card h1, .app-conteudo h1{
+    border-bottom: 3px solid black;
+}
+.equipe-conteudo h1, .equipamento-conteudo h1{
+    border-bottom: 3px solid var(--magenta);
+}
+.grid-valores{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+.secao-card{
+    padding-top: 30px;
+    background: linear-gradient(135deg, var(--magenta) 50%, rgba(83, 6, 83, 0.363)),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, transparent 40%);
+}
+.card-valores{
+    flex-direction: column;
+    display: flex;
+    width: 250px;
+    flex: 0 0 250px;
+    background-color: var(--magenta);
+    box-shadow: inset 0 -10px 16px rgba(0, 0, 0, 0.5), 0px 0px 20px black, 0px 5px 1px #00000036;
+    border-radius: 20px;
+    padding: 30px 10px;
+    margin-bottom: 30px;
+}
+.card-valores h3{
+    font-size: clamp(1.25rem, 1.5vw, 2rem);
+    margin-bottom: 1rem;
+    font-weight: 800;
+}
+.card-valore p{
+    font-size: clamp(0.75rem, 1vw, 0.9rem);
+}
+
+/*EQUIPE*/
+.equipe-img{
+    background-image: url('../assets/banner.png');
+    background-size: cover;
+    background-position: center right ;  
+    margin-top: 20px;
+    height: 400px;
+    width: 460px;
+    display: block;
+    max-width: 100%;
+    flex-shrink: 0;
+    border-radius: 20px;
+    box-shadow: 0px 0px 30px var(--magenta), 0px 5px 1px #8a0a8a79;
+}
+.equipe-conteudo h1 span{
+    color: var(--magenta);
+    font-weight: 800;
+    font-size: 2.5rem;
+}
+.equipe-cargos ul{
+    margin: 40px 0 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    list-style: none;
+    flex-shrink: 0;
+}
+.equipe-cargos li{
+    font-weight: 700;
+    line-height: 1rem;
+}
+.equipe-cargos li span{
+    color: var(--magenta);
+    font-size: clamp(0.75rem, 1vw, 1rem);
+    opacity: 0.9;
+}
+
+/*APP*/
+.app-conteudo{
+    display:flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 5% 5%;
+    min-height: 400px;
+    background: linear-gradient(135deg, var(--magenta) 50%, rgba(83, 6, 83, 0.363)),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, transparent 40%);
+}
+.app-texto{
+    position: relative;
+    flex: 1;
+    align-self: center;
+    bottom: 3rem;
+    padding: 0 5%;
+}
+.app-texto span{
+    font-weight: 800;
+    text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-style: italic;
+}
+.app-img img{
+    height: auto;
+    width: 90%;
+    position: relative;
+    bottom: 2rem;
+}
+
+/*EQUIPAMENTOS*/
+.secao-equipamento {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 25px;
+    padding: 50px 0;
+    box-sizing: border-box;
+    align-items: stretch;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 0 5px 0;
+    animation: fadeUp 1s ease 0.2s both;
+}
+details summary{
+    background-color: var(--magenta);
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: inset 0px -5px 10px rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+details[open] summary{
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+summary::before{
+    content: "+";
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+    font-weight: 700;
+    margin-right: 10px;
+}
+details[open] summary::before{   
+    transform: rotate(90deg);
+} 
+details ul{
+    border: solid 3px var(--magenta);
+    border-top: none;
+    padding: 5px 10px;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+    opacity: 0;
+    max-height: 0;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+details[open] ul{
+    max-height: 200px;
+    opacity: 1;
+    padding: 10px;
+}
+
+/*ANIMACAO*/
+.grid-valores, .sobre-equipe, .app-conteudo, .sobre-aparelhos, .sobre-texto-acad  {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.grid-valores.visivel, .sobre-equipe.visivel, .app-conteudo.visivel, .sobre-aparelhos.visivel, .sobre-texto-acad.visivel  {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 830px){
+        .app-img img {
+        flex-shrink: 1;
+        bottom: 0;
+        display: block;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 650px){
+.grid-valores{
+    margin-top: auto;
+    }
+    .app-conteudo {
+        flex-direction: column;
+        align-items: center;
+        padding: 10% 5%;
+    }
+    .app-texto {
+        bottom: 0;
+        text-align: center;
+    }
+    .app-img img {
+        width: 90%;
+        bottom: 0;
+    }
+    .equipe-cargos ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        gap: 20px;
+    }
+}
+@media (max-width: 600px){
+    .grid-valores{    
+    gap: 2px;
+} 
+}
+@media (max-width: 475px){
+    .equipe-img{
+        flex-shrink: 0;
+        width: 100%;
+        background-position: center right 20%;
+    }
+    .equipe-cargos li {
+        font-size: 0.85rem;
+    }
+}
+@media (max-width: 430px){
+    .equipe-img{
+        flex-shrink: 0;
+        width: 100%;
+        background-position: center right 30%;
+    }
+}
+@media (max-width: 380px){
+    .equipe-img{
+        flex-shrink: 0;
+        height: 300px;
+        width: 80%;
+        background-position: center right 30%;
+    }
 }

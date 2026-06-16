@@ -26,7 +26,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.2 });
 
-document.querySelectorAll('.sobre-texto, .sobre-img, .card, .callout-texto, .callout-img, .mapa, .local-texto, .texto-info, .card-mensal, .header, .faqmain .titulo, .experimental-texto, .experimental-img, .playlist-texto, form').forEach(el => {
+document.querySelectorAll('.sobre-texto, .sobre-img, .card, .callout-texto, .callout-img, .mapa, .local-texto, .texto-info, .card-mensal, .header, .faqmain .titulo, .experimental-texto, .experimental-img, .playlist-texto, form, .grid-valores, .sobre-equipe, .app-conteudo, .sobre-aparelhos, .sobre-texto-acad').forEach(el => {
     observer.observe(el);
 });
 
