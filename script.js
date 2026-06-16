@@ -9,7 +9,7 @@ function fecharSidebar(){
   document.querySelector('.mobile').classList.remove('aberta');
 }
 
-//hover rosa NAVBAR
+//links ativos navbar mobile
 document.querySelectorAll('.mobile a').forEach(link => {
     link.addEventListener('click', function(){
         document.querySelectorAll('.mobile a').forEach(l => l.classList.remove('ativo'));
@@ -17,7 +17,7 @@ document.querySelectorAll('.mobile a').forEach(link => {
     });
 });
 
-//transicao
+//transicao de elementos
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -30,7 +30,7 @@ document.querySelectorAll('.sobre-texto, .sobre-img, .card, .callout-texto, .cal
     observer.observe(el);
 });
 
-//scroll sumir
+//icons flutuantes de whats e insta sumir
 const scrollIndicator = document.querySelector('.scroll-indicator');
 const iconzap = document.querySelector('.zap');
 const iconinsta = document.querySelector('.insta')
@@ -94,3 +94,16 @@ document.getElementById('playlist').addEventListener('submit', function(e) {
     botao.value = 'Enviar';
 })
 });
+
+//redirecionamento de loja mobile :>
+ function redirectToStore() {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      window.location.href = "https://apps.apple.com/br/app/next-fit/id1360859531", "_blank";
+    } else if (/android/i.test(userAgent)) {
+      window.location.href = "https://play.google.com/store/apps/details?id=br.com.fitastic.appaluno&hl=pt_BR&pli=1", "_blank";
+    } else {
+      window.location.href = "https://nextfit.com.br/", "_blank";
+    }
+  }
