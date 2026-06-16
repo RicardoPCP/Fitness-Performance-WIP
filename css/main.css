@@ -431,10 +431,11 @@ form input{
 }
 form label{
     position: relative;
-    right: 2rem;
+    right: 2.2rem;
 }
 form label:first-child{
-    right: 3.7rem;
+    right: 4rem;
+    margin-top: 10px;
 }
 form input.enviar{
     padding: 10px 20px;
